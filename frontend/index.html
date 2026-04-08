@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ScholAR Research Assistant</title>
+
+
+<link rel="stylesheet" href="style.css">
+
+
+<style>
+
+/* PARTICLES BACKGROUND CONTAINER */
+
+#particles-js {
+
+position: fixed;
+
+width: 100%;
+
+height: 100%;
+
+top: 0;
+
+left: 0;
+
+z-index: -1;
+
+}
+
+
+/* SEARCH BAR STYLE */
+
+.search-box {
+
+margin-top: 40px;
+
+display: flex;
+
+justify-content: center;
+
+gap: 10px;
+
+}
+
+
+.search-box input {
+
+width: 400px;
+
+padding: 14px;
+
+border-radius: 30px;
+
+border: none;
+
+font-size: 16px;
+
+outline: none;
+
+}
+
+
+.search-box button {
+
+padding: 14px 30px;
+
+border-radius: 30px;
+
+border: none;
+
+background: cyan;
+
+color: black;
+
+font-weight: bold;
+
+cursor: pointer;
+
+transition: 0.3s;
+
+}
+
+
+.search-box button:hover {
+
+box-shadow:
+
+0 0 10px cyan,
+
+0 0 20px cyan;
+
+}
+
+
+/* CONTAINER */
+
+.container {
+
+text-align: center;
+
+padding-top: 80px;
+
+animation: fadeIn 1.5s ease;
+
+}
+
+
+/* TAGLINE */
+
+.tagline {
+
+font-size: 18px;
+
+margin-top: 10px;
+
+color: #aaa;
+
+}
+
+
+/* TYPING TITLE EFFECT */
+
+.typing {
+
+font-size: 60px;
+
+color: cyan;
+
+overflow: hidden;
+
+white-space: nowrap;
+
+border-right: 4px solid cyan;
+
+width: 7ch;
+
+margin: auto;
+
+animation:
+
+typing 2.5s steps(7),
+
+blink 0.7s infinite;
+
+}
+
+
+@keyframes typing {
+
+from { width: 0 }
+
+to { width: 7ch }
+
+}
+
+
+@keyframes blink {
+
+50% { border-color: transparent }
+
+}
+
+
+/* RESULT SECTION */
+
+#results {
+
+width: 70%;
+
+margin: auto;
+
+margin-top: 50px;
+
+text-align: left;
+
+animation: fadeIn 1.5s ease;
+
+}
+
+
+/* FADE ANIMATION */
+
+@keyframes fadeIn {
+
+from {
+
+opacity: 0;
+
+transform: translateY(30px);
+
+}
+
+to {
+
+opacity: 1;
+
+transform: translateY(0px);
+
+}
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- PARTICLES BACKGROUND -->
+
+<div id="particles-js"></div>
+
+
+
+<div class="container">
+
+
+<h1 class="typing">ScholAR</h1>
+
+
+<p class="tagline">
+
+🚀 Transforming Research into Insightful Knowledge
+
+</p>
+
+
+
+<div class="search-box">
+
+
+<input
+
+id="query"
+
+placeholder="Search research topics like AI healthcare, VLSI, robotics..."
+
+>
+
+
+<button onclick="search()">
+
+Search
+
+</button>
+
+
+</div>
+
+
+
+<div id="results"></div>
+
+
+
+</div>
+
+
+
+<!-- PARTICLES SCRIPT -->
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+
+
+<script>
+
+particlesJS("particles-js", {
+
+particles: {
+
+number: {
+
+value: 80
+
+},
+
+color: {
+
+value: "#00ffff"
+
+},
+
+shape: {
+
+type: "circle"
+
+},
+
+opacity: {
+
+value: 0.5
+
+},
+
+size: {
+
+value: 3
+
+},
+
+line_linked: {
+
+enable: true,
+
+distance: 150,
+
+color: "#00ffff",
+
+opacity: 0.4,
+
+width: 1
+
+},
+
+move: {
+
+enable: true,
+
+speed: 2
+
+}
+
+},
+
+interactivity: {
+
+detect_on: "canvas",
+
+events: {
+
+onhover: {
+
+enable: true,
+
+mode: "repulse"
+
+},
+
+onclick: {
+
+enable: true,
+
+mode: "push"
+
+}
+
+}
+
+}
+
+});
+
+</script>
+
+
+
+<script src="script.js"></script>
+
+
+
+</body>
+
+</html>
