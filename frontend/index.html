@@ -1,373 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ScholAR Research Assistant</title>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholAR — Research Intelligence</title>
 <link rel="stylesheet" href="style.css">
-
-
-<style>
-
-/* PARTICLES BACKGROUND CONTAINER */
-
-#particles-js {
-
-position: fixed;
-
-width: 100%;
-
-height: 100%;
-
-top: 0;
-
-left: 0;
-
-z-index: -1;
-
-}
-
-
-/* SEARCH BAR STYLE */
-
-.search-box {
-
-margin-top: 40px;
-
-display: flex;
-
-justify-content: center;
-
-gap: 10px;
-
-}
-
-
-.search-box input {
-
-width: 400px;
-
-padding: 14px;
-
-border-radius: 30px;
-
-border: none;
-
-font-size: 16px;
-
-outline: none;
-
-}
-
-
-.search-box button {
-
-padding: 14px 30px;
-
-border-radius: 30px;
-
-border: none;
-
-background: cyan;
-
-color: black;
-
-font-weight: bold;
-
-cursor: pointer;
-
-transition: 0.3s;
-
-}
-
-
-.search-box button:hover {
-
-box-shadow:
-
-0 0 10px cyan,
-
-0 0 20px cyan;
-
-}
-
-
-/* CONTAINER */
-
-.container {
-
-text-align: center;
-
-padding-top: 80px;
-
-animation: fadeIn 1.5s ease;
-
-}
-
-
-/* TAGLINE */
-
-.tagline {
-
-font-size: 18px;
-
-margin-top: 10px;
-
-color: #aaa;
-
-}
-
-
-/* TYPING TITLE EFFECT */
-
-.typing {
-
-font-size: 60px;
-
-color: cyan;
-
-overflow: hidden;
-
-white-space: nowrap;
-
-border-right: 4px solid cyan;
-
-width: 7ch;
-
-margin: auto;
-
-animation:
-
-typing 2.5s steps(7),
-
-blink 0.7s infinite;
-
-}
-
-
-@keyframes typing {
-
-from { width: 0 }
-
-to { width: 7ch }
-
-}
-
-
-@keyframes blink {
-
-50% { border-color: transparent }
-
-}
-
-
-/* RESULT SECTION */
-
-#results {
-
-width: 70%;
-
-margin: auto;
-
-margin-top: 50px;
-
-text-align: left;
-
-animation: fadeIn 1.5s ease;
-
-}
-
-
-/* FADE ANIMATION */
-
-@keyframes fadeIn {
-
-from {
-
-opacity: 0;
-
-transform: translateY(30px);
-
-}
-
-to {
-
-opacity: 1;
-
-transform: translateY(0px);
-
-}
-
-}
-
-</style>
-
 </head>
 
-
-
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-book-open" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol><symbol id="i-file-lines" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></symbol><symbol id="i-magnifying-glass" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol><symbol id="i-scale-balanced" viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M5 7h14"/><path d="m5 7-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></symbol><symbol id="i-book" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M20 17v5H6.5a2.5 2.5 0 0 1 0-5"/></symbol><symbol id="i-diagram-project" viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M6 9v3a3 3 0 0 0 3 3h6"/></symbol><symbol id="i-chart-line" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 5-6"/></symbol><symbol id="i-arrow-up-right-from-square" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol></svg>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">
+                <svg class="ic" viewBox="0 0 24 24"><use href="#i-book-open"/></svg>
+            </div>
+
+            <div>
+                <h2>ScholAR</h2>
+                <span>Research Intelligence</span>
+            </div>
+        </div>
+
+        <div class="sidebar-title">
+            RESEARCH
+        </div>
+
+        <nav>
+
+            <button class="nav-item active" data-section="papers">
+                <svg class="ic" viewBox="0 0 24 24"><use href="#i-file-lines"/></svg>
+                <span>Top Papers</span>
+            </button>
+
+            <button class="nav-item" data-section="gaps">
+                <svg class="ic" viewBox="0 0 24 24"><use href="#i-magnifying-glass"/></svg>
+                <span>Research Gaps</span>
+            </button>
+
+            <button class="nav-item" data-section="contradictions">
+                <svg class="ic" viewBox="0 0 24 24"><use href="#i-scale-balanced"/></svg>
+                <span>Contradictions</span>
+            </button>
+
+            <button class="nav-item" data-section="review">
+                <svg class="ic" viewBox="0 0 24 24"><use href="#i-book"/></svg>
+                <span>Literature Review</span>
+            </button>
+
+            <button class="nav-item" data-section="graph">
+                <svg class="ic" viewBox="0 0 24 24"><use href="#i-diagram-project"/></svg>
+                <span>Knowledge Graph</span>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="status-dot"></div>
+            <span>AI Research Agent</span>
+        </div>
+
+    </aside>
 
 
+    <!-- MAIN -->
+    <main class="main">
 
-<!-- PARTICLES BACKGROUND -->
+        <!-- TOP BAR -->
+        <header class="topbar">
 
-<div id="particles-js"></div>
+            <div>
+                <h1>Research Workspace</h1>
+                <p>Discover, analyze and synthesize academic research.</p>
+            </div>
 
-
-
-<div class="container">
-
-
-<h1 class="typing">ScholAR</h1>
-
-
-<p class="tagline">
-
-🚀 Transforming Research into Insightful Knowledge
-
-</p>
+        </header>
 
 
+        <!-- SEARCH -->
+        <section class="search-section">
 
-<div class="search-box">
+            <div class="search-box">
+
+                <svg class="ic" viewBox="0 0 24 24"><use href="#i-magnifying-glass"/></svg>
+
+                <input
+                    id="query"
+                    type="text"
+                    placeholder="Search a research topic..."
+                    onkeydown="if(event.key === 'Enter') search()"
+                >
+
+                <button onclick="search()">
+                    Search
+                </button>
+
+            </div>
+
+            <div id="search-status"></div>
+
+        </section>
 
 
-<input
+        <!-- CONTENT -->
+        <section class="workspace">
 
-id="query"
+            <div id="empty-state" class="empty-state">
 
-placeholder="Search research topics like AI healthcare, VLSI, robotics..."
+                <div class="empty-icon">
+                    <svg class="ic" viewBox="0 0 24 24"><use href="#i-book-open"/></svg>
+                </div>
 
->
+                <h2>Start your research</h2>
+
+                <p>
+                    Enter a research topic above to discover papers,
+                    identify research gaps, compare findings and generate
+                    a structured literature review.
+                </p>
+
+            </div>
 
 
-<button onclick="search()">
+            <div id="results" class="results hidden">
 
-Search
+                <!-- PAPERS -->
+                <section id="papers" class="content-section active-section">
 
-</button>
+                    <div class="section-header">
+                        <div>
+                            <span class="eyebrow">DISCOVERY</span>
+                            <h2>Top Papers</h2>
+                            <p>Most relevant papers discovered for your topic.</p>
+                        </div>
 
+                        <span id="paper-count" class="count-badge"></span>
+                    </div>
+
+                    <div id="papers-content"></div>
+
+                </section>
+
+
+                <!-- GAPS -->
+                <section id="gaps" class="content-section">
+
+                    <div class="section-header">
+                        <div>
+                            <span class="eyebrow">ANALYSIS</span>
+                            <h2>Research Gaps</h2>
+                            <p>Potential areas where existing research is limited.</p>
+                        </div>
+                    </div>
+
+                    <div id="gaps-content"></div>
+
+                </section>
+
+
+                <!-- CONTRADICTIONS -->
+                <section id="contradictions" class="content-section">
+
+                    <div class="section-header">
+                        <div>
+                            <span class="eyebrow">COMPARISON</span>
+                            <h2>Contradictions</h2>
+                            <p>Differences and conflicting findings across studies.</p>
+                        </div>
+                    </div>
+
+                    <div id="contradictions-content"></div>
+
+                </section>
+
+
+                <!-- REVIEW -->
+                <section id="review" class="content-section">
+
+                    <div class="section-header">
+                        <div>
+                            <span class="eyebrow">SYNTHESIS</span>
+                            <h2>Literature Review</h2>
+                            <p>AI-generated synthesis of the discovered research.</p>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div id="review-content"></div>
+                    </div>
+
+                </section>
+
+
+                <!-- GRAPH -->
+                <section id="graph" class="content-section">
+
+                    <div class="section-header">
+                        <div>
+                            <span class="eyebrow">VISUALIZATION</span>
+                            <h2>Knowledge Graph</h2>
+                            <p>Explore relationships between papers, concepts and findings.</p>
+                        </div>
+                    </div>
+
+                    <div class="graph-card">
+                        <iframe
+                            id="knowledge-graph"
+                            src=""
+                            title="Knowledge Graph">
+                        </iframe>
+                    </div>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
 
 </div>
 
-
-
-<div id="results"></div>
-
-
-
-</div>
-
-
-
-<!-- PARTICLES SCRIPT -->
-
-<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
-
-<script>
-
-particlesJS("particles-js", {
-
-particles: {
-
-number: {
-
-value: 80
-
-},
-
-color: {
-
-value: "#00ffff"
-
-},
-
-shape: {
-
-type: "circle"
-
-},
-
-opacity: {
-
-value: 0.5
-
-},
-
-size: {
-
-value: 3
-
-},
-
-line_linked: {
-
-enable: true,
-
-distance: 150,
-
-color: "#00ffff",
-
-opacity: 0.4,
-
-width: 1
-
-},
-
-move: {
-
-enable: true,
-
-speed: 2
-
-}
-
-},
-
-interactivity: {
-
-detect_on: "canvas",
-
-events: {
-
-onhover: {
-
-enable: true,
-
-mode: "repulse"
-
-},
-
-onclick: {
-
-enable: true,
-
-mode: "push"
-
-}
-
-}
-
-}
-
-});
-
-</script>
-
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
 <script src="script.js"></script>
 
-
-
 </body>
-
 </html>
