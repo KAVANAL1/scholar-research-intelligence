@@ -17,7 +17,7 @@ function search() {
     `;
 
 
-    fetch(`http://127.0.0.1:8000/research?topic=${query}`)
+    fetch(`/research?topic=${encodeURIComponent(query)}`)
 
     .then(res => res.json())
 
@@ -140,7 +140,7 @@ function display(data) {
 
 <iframe
 
-src="../knowledge_graph/graph.html"
+src="/knowledge_graph/graph.html"
 
 width="100%"
 

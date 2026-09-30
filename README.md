@@ -46,7 +46,7 @@ GROQ_API_KEY=your_key_here
 uvicorn backend.main:app --reload
 ```
 
-Open **http://127.0.0.1:8000** 🎉
+Open https://scholar-research-intelligence.onrender.com 🎉
 
 ## 📁 Structure
 

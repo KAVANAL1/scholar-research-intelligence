@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 from agents.gap_agent import detect_research_gaps
 from agents.search_agent import search_papers
 from agents.analysis_agent import analyze_papers
@@ -9,21 +12,13 @@ from knowledge_graph.graph_builder import build_graph
 
 app = FastAPI()
 
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
-    allow_headers=["*"],
+    allow_headers=["*"]
 )
-
-
-@app.get("/")
-def home():
-    return {
-        "message": "ScholAR Autonomous Research Agent Running"
-    }
 
 
 @app.get("/research")
@@ -38,28 +33,34 @@ def research(topic: str):
     gaps = detect_research_gaps(topic, papers)
 
     review = generate_literature_review(
-
         topic,
-
         papers,
-
         analysis,
-
         gaps
     )
 
     build_graph(topic, papers, contradictions, gaps)
 
     return {
-
         "topic": topic,
-
         "papers": papers,
-
         "gaps": gaps,
-
         "contradictions": contradictions,
-
         "review": review
-
     }
+
+
+# Knowledge graph files
+app.mount(
+    "/knowledge_graph",
+    StaticFiles(directory="knowledge_graph"),
+    name="knowledge_graph"
+)
+
+
+# Frontend
+app.mount(
+    "/",
+    StaticFiles(directory="frontend", html=True),
+    name="frontend"
+)
